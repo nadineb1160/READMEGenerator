@@ -10,6 +10,12 @@ function retreiveUserData() {
     // At least one badge
     inquirer.prompt([
         {
+            // Name
+            type: "input",
+            name: "name",
+            message: "Please write your name: ",
+        },
+        {
             // Project title
             type: "input",
             name: "title",
@@ -19,7 +25,7 @@ function retreiveUserData() {
             // Description
             type: "input",
             name: "description",
-            message: "Please write a long description of your project: "
+            message: "Please write a description of your project: "
         },
         {
             // Technologies
@@ -31,7 +37,7 @@ function retreiveUserData() {
             // Installation
             type: "input",
             name: "installation",
-            message: "Please describe the intallation: ",
+            message: "Please describe the installation instructions: ",
         },
         {
             // Usage
@@ -68,13 +74,7 @@ function retreiveUserData() {
             type: "input",
             name: "github",
             message: "Please write your GitHub username: ",
-        },
-        {
-            // Name
-            type: "input",
-            name: "name",
-            message: "Please write your name: ",
-        },
+        }
 
     ]).then(function (userChoices) {
 
@@ -82,7 +82,6 @@ function retreiveUserData() {
 
         axios.get(queryGithubURL).then(
             function (githubProfile) {
-                console.log(githubProfile.data);
                 let data = githubProfile.data;
 
                 // Add github profile picture
@@ -143,11 +142,4 @@ function handleError(error) {
     }
     console.log(error.config);
 }
-
-// With <project> you can <verb><noun>...
-// <project> helps you <varb><noun>....
-// Unlike <alternative>, <project> <verbs> <noun>....
-
-
-// https://img.shields.io/badge/<LABEL>-<MESSAGE>-<COLOR>
 

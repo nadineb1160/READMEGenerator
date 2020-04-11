@@ -54,10 +54,12 @@ function fillInInput(userChoices) {
     `## Authors\n` +
     `#\n` + 
     `${userChoices.name}\n` +
-    
-    `![Photo](${userChoices.githubPic})\n` +
+    `\n` +
+
     `- Github: ${userChoices.github}\n` +
-    `- [GitHub URL](${userChoices.url})\n`
+    `- [GitHub URL](${userChoices.url})\n` +
+    `\n` +
+    `![Photo](${userChoices.githubPic})\n`
     
     // ## Acknowledgements - code contributions
     // # 
