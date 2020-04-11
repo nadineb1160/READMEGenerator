@@ -11,7 +11,7 @@ function fillInInput(userChoices) {
 
     `## Table of Contents\n` +
     `#\n` +
-    `- [Prereqs](#prereqs)\n` +
+ 
     `- [Installation](#installation)\n` +
     `- [Usage](#usage)\n` +
     `- [Deployment](#deployment)\n` +
@@ -54,9 +54,10 @@ function fillInInput(userChoices) {
     `## Authors\n` +
     `#\n` + 
     `${userChoices.name}\n` +
-
-    `Github: ${userChoices.github}\n` +
-    `[GitHub](${userChoices.url})\n`
+    
+    `![Photo](${userChoices.githubPic})\n` +
+    `- Github: ${userChoices.github}\n` +
+    `- [GitHub URL](${userChoices.url})\n`
     
     // ## Acknowledgements - code contributions
     // # 
