@@ -3,7 +3,6 @@ This is a command-line application that dynamically generates a README.md from a
 >Technologies:
 Node.js and ES6+
 ## Table of Contents
-#
 - [Installation](#installation)
 - [Usage](#usage)
 - [Deployment](#deployment)
@@ -12,14 +11,12 @@ Node.js and ES6+
 - [Authors](#authors)
 - [Questions](#questions)
 ## Getting Started
-#
 ### Installation:
 Install axios and inquirer using: npm install
 ### Usage:
 Application run by using: node index.js
 
 ## Authors
-#
 Nadine Bundschuh
 
 - Github: nadineb1160
