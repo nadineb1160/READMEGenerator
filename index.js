@@ -86,6 +86,9 @@ function retreiveUserData() {
 
                 // Add github profile picture
                 userChoices.githubPic = githubProfile.avatar_url;
+                userChoices.url = githubProfile.html_url;
+                userChoices.name = githubProfile.name;
+
             })
             .catch(function (error) {
                 handleError(error);
