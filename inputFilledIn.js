@@ -9,7 +9,6 @@ function fillInInput(userChoices) {
     `${userChoices.technologies}\n` +
 
     `## Table of Contents\n` +
-    // `#\n` +
  
     `- [Installation](#installation)\n` +
     `- [Usage](#usage)\n` +
@@ -20,7 +19,6 @@ function fillInInput(userChoices) {
     `- [Questions](#questions)\n` +
 
     `## Getting Started\n` +
-    // `#\n` +
     // `### Prerequistes:\n` +
     // `${userChoices.prereqs}\n` +
 
@@ -51,7 +49,6 @@ function fillInInput(userChoices) {
     `${userChoices.questions}\n` +
     
     `## Authors\n` +
-    // `#\n` + 
     `${userChoices.name}\n` +
     `\n` +
 
