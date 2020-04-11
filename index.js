@@ -113,6 +113,8 @@ function retreiveUserData() {
         // axios.get(queryBadgeURL).then(
         //     function (response) {
         //         console.log(response);
+        //         userChoices.badge = response.data;
+
         //     }).catch(function(error) {
         //         handleError(error);
         //     });
