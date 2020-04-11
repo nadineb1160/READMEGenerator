@@ -5,8 +5,7 @@ function fillInInput(userChoices) {
     `# ${userChoices.title}\n` +
     `${userChoices.description}\n` +
 
-    `### Technologies\n` +
-    `#\n` + 
+    `>Technologies:\n` +
     `${userChoices.technologies}\n` +
 
     `## Table of Contents\n` +
@@ -59,11 +58,13 @@ function fillInInput(userChoices) {
     `- Github: ${userChoices.github}\n` +
     `- [GitHub URL](${userChoices.url})\n` +
     `\n` +
-    `![Photo](${userChoices.githubPic})\n`
+    `![Photo](${userChoices.githubPic})\n` 
     
     // ## Acknowledgements - code contributions
     // # 
     // ${userChoices.acknowledgements}
+
+    // `![Photo](${userChoices.badge})\n`
     
     return longString;
 }
