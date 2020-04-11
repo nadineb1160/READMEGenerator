@@ -1,4 +1,8 @@
-var inquirer = require("inquirer");
+const fs = require("fs");
+const inquirer = require("inquirer");
+const axios = require("axios");
+const fillInInput = require("./inputFilledIn");
+
 
 retreiveUserData();
 
@@ -12,16 +16,22 @@ function retreiveUserData() {
             message: "Please input your project title: "
         },
         {
+            // Short Description
+            type: "input",
+            name: "shortDescription",
+            message: "Please write a short description of your project: "
+        },
+        {
             // Description
             type: "input",
             name: "description",
-            message: "Please write a description of your project: "
+            message: "Please write a long description of your project: "
         },
         {
-            // Table of Contents
+            // Technologies
             type: "input",
-            name: "tableOfContents",
-            message: "Please write a your table of contents: "
+            name: "technologies",
+            message: "Please write the technologies used: "
         },
         {
             // Installation
@@ -32,7 +42,7 @@ function retreiveUserData() {
         {
             // Usage
             type: "input",
-            name: "installation",
+            name: "usage",
             message: "Please describe the usage: ",
         },
         {
@@ -60,86 +70,37 @@ function retreiveUserData() {
             message: "Please write your questions: ",
         },
         {
-            // User GitHub profile picture
+            // User GitHub
             type: "input",
             name: "github",
             message: "Please write your GitHub username: ",
         },
-        {
-            // User GitHub email
-            type: "input",
-            name: "githubEmail",
-            message: "Please write your GitHub email: ",
-        },
+        
+    ]).then(function (userChoices) {
 
-    ])
+        // let queryURL = "";
+
+        // axios.get(queryURL).then(function(githubProfile) {  
+
+
+        // })
+
+        var strInput = fillInInput(userChoices);
+
+        fs.writeFile("README.md", strInput, function (error, data) {
+            console.log("written to README");
+        })
+
+        return;
+
+    })
+
 }
 
-// # Title
-
-// # line
-
-// Description
-
-// ## Table of Contents
-
-// #
-
-// table of contents
-
-// ## Getting Started
-
-// Prerequistes and Installing
-
-// # 
-
-// installing
-
-// ## Running Tests 
-
-// # 
-
-// tests - how to run the tests for this system
-
-// ## Deployment
-
-// # 
-
-// notes on deployment
-
-// ## Technologies
-
-// # 
-
-// list of technologies
-
-// ## Contributing
-
-// #
-
-// contributing
-
-// ## Authors
-
-// # 
-
-// name
-
-// links to github
-
-// github email
-
-// ## License 
-
-// # 
-
-// license
-
-// ## Acknowledgements
-
-// # 
-
-// acknowledgements - code contributions
+// With <project> you can <verb><noun>...
+// <project> helps you <varb><noun>....
+// Unlike <alternative>, <project> <verbs> <noun>....
 
 
 // https://img.shields.io/badge/<LABEL>-<MESSAGE>-<COLOR>
+
