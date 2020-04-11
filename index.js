@@ -16,12 +16,6 @@ function retreiveUserData() {
             message: "Please input your project title: "
         },
         {
-            // Short Description
-            type: "input",
-            name: "shortDescription",
-            message: "Please write a short description of your project: "
-        },
-        {
             // Description
             type: "input",
             name: "description",
@@ -75,6 +69,12 @@ function retreiveUserData() {
             name: "github",
             message: "Please write your GitHub username: ",
         },
+        {
+            // Name
+            type: "input",
+            name: "name",
+            message: "Please write your name: ",
+        },
 
     ]).then(function (userChoices) {
 
@@ -82,18 +82,29 @@ function retreiveUserData() {
 
         axios.get(queryGithubURL).then(
             function (githubProfile) {
-                console.log(githubProfile);
+                console.log(githubProfile.data);
+                let data = githubProfile.data;
 
                 // Add github profile picture
-                userChoices.githubPic = githubProfile.avatar_url;
-                userChoices.url = githubProfile.html_url;
-                userChoices.name = githubProfile.name;
+                userChoices.githubPic = data.avatar_url;
+                userChoices.url = data.html_url;
+
+                // Fill in input with user inputs
+                var strInput = fillInInput(userChoices);
+
+                // Write README file
+                fs.writeFile("README.md", strInput, function (error, data) {
+                    console.log("written to README");
+                })
+
+                return;
+
 
             })
             .catch(function (error) {
                 handleError(error);
             });
-    
+
         // let label = "";
         // let message = "";
         // let color = "";
@@ -107,16 +118,6 @@ function retreiveUserData() {
         //         handleError(error);
         //     });
 
-
-        // Fill in input with user inputs
-        var strInput = fillInInput(userChoices);
-
-        // Write README file
-        fs.writeFile("README.md", strInput, function (error, data) {
-            console.log("written to README");
-        })
-
-        return;
 
     })
 
