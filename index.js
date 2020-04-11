@@ -43,7 +43,7 @@ function retreiveUserData() {
             // Usage
             type: "input",
             name: "usage",
-            message: "Please describe the usage: ",
+            message: "Please describe the usage command or instructions: ",
         },
         {
             // License
@@ -75,18 +75,40 @@ function retreiveUserData() {
             name: "github",
             message: "Please write your GitHub username: ",
         },
-        
+
     ]).then(function (userChoices) {
 
-        // let queryURL = "";
+        let queryGithubURL = "https://api.github.com/users/" + userChoices.github;
 
-        // axios.get(queryURL).then(function(githubProfile) {  
+        axios.get(queryGithubURL).then(
+            function (githubProfile) {
+                console.log(githubProfile);
+
+                // Add github profile picture
+                userChoices.githubPic = githubProfile.avatar_url;
+            })
+            .catch(function (error) {
+                handleError(error);
+            });
+    
+        // let label = "";
+        // let message = "";
+        // let color = "";
+
+        // let queryBadgeURL = "https://img.shields.io/badge/" + label + "-" + message + "-" + color;
+
+        // axios.get(queryBadgeURL).then(
+        //     function (response) {
+        //         console.log(response);
+        //     }).catch(function(error) {
+        //         handleError(error);
+        //     });
 
 
-        // })
-
+        // Fill in input with user inputs
         var strInput = fillInInput(userChoices);
 
+        // Write README file
         fs.writeFile("README.md", strInput, function (error, data) {
             console.log("written to README");
         })
@@ -95,6 +117,27 @@ function retreiveUserData() {
 
     })
 
+}
+
+function handleError(error) {
+    if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.log("---------------Data---------------");
+        console.log(error.response.data);
+        console.log("---------------Status---------------");
+        console.log(error.response.status);
+        console.log("---------------Status---------------");
+        console.log(error.response.headers);
+    } else if (error.request) {
+        // The request was made but no response was received
+        // `error.request` is an object that comes back with details pertaining to the error that occurred.
+        console.log(error.request);
+    } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log("Error", error.message);
+    }
+    console.log(error.config);
 }
 
 // With <project> you can <verb><noun>...
