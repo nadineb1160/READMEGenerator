@@ -51,17 +51,12 @@ function fillInInput(userChoices) {
     `#\n` +
     `${userChoices.questions}\n` +
     
-    
     `## Authors\n` +
     `#\n` + 
-    // `${userChoices.name}\n` +
+    `${userChoices.name}\n` +
 
-    `Github: ${userChoices.github}`
-    
-    // - ${userChoices.url}
-
-    // - ${userChoices.email}
-    
+    `Github: ${userChoices.github}\n` +
+    `[GitHub](${userChoices.url})\n`
     
     // ## Acknowledgements - code contributions
     // # 
